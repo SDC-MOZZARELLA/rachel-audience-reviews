@@ -1,0 +1,100 @@
+.recentList {
+  display: flex;
+  margin: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 1 1 black;
+  padding: 2.5rem;
+  flex: 1 1 auto;
+}
+.checked {
+  color: orange;
+}
+.reviewLabel {
+  display: flex;
+  margin: 1.0rem;
+  padding-left: 1.0rem;
+  padding-right: 1.0rem;
+  font-size: 36;
+  background: red;
+  text-shadow: 2px 2px 0 20;
+  box-shadow: 15px -8px #716a6a;
+  text-shadow: 1px 1px 0px #000000;
+  border-radius: 15px;
+  color: #ffecec;
+}
+.singleReview {
+  display: flex;
+  margin: 5rem;
+  padding-bottom: 2.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  flex: 1 1 auto;
+  background-color: rgb(250, 247, 242);
+  border-radius: 15px;
+  box-shadow: 1px -2px 8px 0px black;
+}
+.recentList {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0.5rem;
+}
+.singleReview {
+  display: flex;
+  flex-flow: column wrap;
+  margin: 0.5rem;
+  flex: 1 1 auto;
+}
+.sRStars {
+  display: inline-flex;
+  flex-flow: wrap;
+  margin: 0.5rem;
+  flex: 1 1 auto;
+  float: left;
+  padding-top: 1.0rem;
+}
+.sRDate {
+  display: inline-flex;
+  flex-flow: wrap;
+  margin: 0.5rem;
+  flex: 1 1 auto;
+  float: right;
+  padding-top: 1.0rem;
+  color: #716a6a;
+  font-size: 16;
+}
+.sRText {
+  display: block;
+  flex-flow: column ;
+  padding: 15;
+  font-style: italic;
+  font-size: 18;
+}
+.sRUser {
+  display: inline-flex;
+  margin-right: 2.5rem;
+  margin-top: 1.5rem;
+  text-align:right;
+  font-size: 20;
+  font-weight: bold;
+}
+img {
+  display: inline-flex;
+  margin-top: 0.7rem;
+  margin-right: 0.5rem;
+  border-radius: 20px;
+  width:40px;
+  height:40px;
+}
+.iconAndName {
+  display: block;
+  float:right;
+}
+.viewMore {
+  display: inline-flex;
+  justify-content: center;
+  flex-flow: column;
+  font-size: 1.8rem;
+  margin: 0.5rem;
+  justify-content: right;
+}
+
