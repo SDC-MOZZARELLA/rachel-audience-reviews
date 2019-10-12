@@ -1,6 +1,22 @@
 import React from 'react';
 
-var AudReviewList = (props) => (
+
+
+var AudReviewList = (props) => {
+  // star element
+  var rating = function(element) {
+    var stars = [];
+    for (var i = 0; i < 5; i++) {
+      if (i < element.reviewRating) {
+          stars.push(<span className="fa fa-star checked"></span>)
+      } else {
+          stars.push(<span className="fa fa-star"></span>)
+      }
+    }
+    return stars;
+  }
+
+  return (
   <div className="recentReviews">
     <h3 className="reviewLabel">Audience Reviews</h3>
     <div className="recentList">
@@ -8,26 +24,23 @@ var AudReviewList = (props) => (
         <div className="singleReview">
           <div className="rateAndDate">
             <div className="sRStars">
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
+              {rating(review).map((star) => star)}
             </div>
-            <div className="sRDate">Sep 28, 2019</div>
+            <div className="sRDate">{review.reviewDate}</div>
           </div>
-          <div className="sRText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis nunc sed.</div>
-          <span className="iconAndName"><img src="https://d2a5cgar23scu2.cloudfront.net/static/images/redesign/actor.default.tmb.gif"></img>
-          <span className="SRUser">Audience reviewer #{review}</span>
+          <div className="sRText">{review.reviewText}</div>
+          <span className="iconAndName"><img src="https://krillin-audience-reviews.s3.us-west-1.amazonaws.com/AR_avatar.gif"></img>
+          <span className="SRUser">{review.reviewerName}</span>
           </span>
         </div>
       )}
     </div>
-    <div className="viewMore">
-      <button>View more reviews</button>
+    <div>
+      <button>Show More</button>
     </div>
   </div>
-)
+  )
+}
 
 export default AudReviewList;
 

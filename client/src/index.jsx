@@ -7,26 +7,47 @@ class App extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
-      audReviews: '',
-      topSix: ["1","2","3","4","5","6"],
-      newReview: ''
-    }
+      topSix: [],
+      showMore: [],
+      zoom: false
+    };
     this.getAudienceReviews = this.getAudienceReviews.bind(this);
+  }
+
+  onReview() {
+    this.setState({
+      zoom: !this.state.zoom
+    });
+  }
+  offReview() {
+    this.setState({
+      zoom: this.state.zoom
+    });
   }
 
   getAudienceReviews() {
     fetch('/api/audienceReviews')
       .then(list => list.json())
-      .then(reviews => this.setState({ topSix : reviews}))
+      // .then(returned => console.log(returned));  // returns 100 length array
+      .then(returned => this.setState({ topSix : returned.slice(0,6) }))
   }
 
-
+  // getMoreReviews() {
+  //   fetch('/api/audienceReviews')
+  //     .then(list => list.json())
+  //     // .then(returned => console.log(returned));  // returns 100 length array
+  //     .then(returned => this.setState({ showMore : returned}))
+  // }
 
   componentDidMount() {
     this.getAudienceReviews()
   }
 
   render () {
+    // var style = {
+    //   box-shadow: 1px -2px 8px 0px black;
+    // }
+
     return (
       <div>
         <h1 className="audReviewsHeader"></h1>
