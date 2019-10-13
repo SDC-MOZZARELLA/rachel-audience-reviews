@@ -1,5 +1,13 @@
+html {
+  width: 1200px
+}
+body {
+  width: 90%
+}
 .recentList {
+  max-width:400px;
   display: flex;
+  flex-wrap: wrap;
   margin: 1.5rem;
   border-radius: 15px;
   box-shadow: 1 1 black;
@@ -33,6 +41,11 @@
   border-radius: 15px;
   box-shadow: 1px -2px 8px 0px black;
 }
+.singleReview:hover{
+  box-shadow: 1px -2px 8px 0px rgb(255, 217, 0);
+  transform: scale(1.01);
+  font-weight:bold;
+}
 .recentList {
   display: flex;
   flex-flow: column nowrap;
@@ -65,36 +78,45 @@
 .sRText {
   display: block;
   flex-flow: column ;
-  padding: 15;
+  /* padding: 15; */
   font-style: italic;
   font-size: 18;
 }
 .sRUser {
   display: inline-flex;
-  margin-right: 2.5rem;
+  margin-right: 1.5rem;
   margin-top: 1.5rem;
   text-align:right;
   font-size: 20;
   font-weight: bold;
+  float: right;
 }
 img {
   display: inline-flex;
   margin-top: 0.7rem;
+  justify-content: right;
   margin-right: 0.5rem;
   border-radius: 20px;
   width:40px;
   height:40px;
+  /* float: right; */
 }
 .iconAndName {
-  display: block;
-  float:right;
+  display: inline-block;
+  flex-flow: wrap;
+  flex: 1 1 auto;
+  text-align: right;
+  color: #000000;
+  font-size: 16;
 }
-.viewMore {
-  display: inline-flex;
-  justify-content: center;
-  flex-flow: column;
-  font-size: 1.8rem;
-  margin: 0.5rem;
-  justify-content: right;
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
