@@ -17,8 +17,12 @@
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-styled-components": "^1.10.6",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "jest": "^24.9.0",
     "mongo": "^0.1.0",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.4",
@@ -26,9 +30,12 @@
     "nodemon": "^1.19.3",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "styled-components": "^4.4.0",
     "webpack": "^4.41.0"
   },
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "webpack-cli": "^3.3.9"
   }
 }
