@@ -1,24 +1,19 @@
 const axios = require('axios');
+const express = require('express');
+const app = express();
+import { shallow } from 'enzyme';
 
-// Optionally the request above could also be done as
-axios.get('/api/audienceReviews', {
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+describe('API route to get user reviews', () => {
+  it('Should return data from a get request to /api/audienceReviews', async () => {
+    axios.get('http://localhost:5000/api/audienceReviews')
+      .then(response => {
+        console.log(response.json());
+      })
+      .catch(response => {
+        console.log('This was an error ', response);
+      })
+  })
 })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  });
-
-// Want to use async/await? Add the `async` keyword to your outer function/method.
-// async function getUser() {
-//   try {
-//     const response = await axios.get('/user?ID=12345');
-//     console.log(response);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }

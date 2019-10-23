@@ -72,5 +72,3 @@ module.exports.AReview = AReview;
 module.exports.save = save;
 module.exports.getReviews = getReviews;
 module.exports.generateFakeData = generateFakeData;
-
-

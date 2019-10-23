@@ -57,12 +57,12 @@ const SRStars = styled.div`
   padding-top: 1.0rem;
 `;
 
-const Checked = styled.div`
+const Filled = styled.div`
   display: inline;
   color: orange;
 `;
 
-const Unchecked = styled.div`
+const Unfilled = styled.div`
   display: inline;
   color: black;
 `;
@@ -210,9 +210,9 @@ class SinglePost extends React.Component {
       var stars = [];
       for (var i = 0; i < 5; i++) {
         if (i < element.reviewRating) {
-            stars.push(<Checked><span>☆</span></Checked>)
+            stars.push(<Filled><span>★</span></Filled>)
         } else {
-            stars.push(<Unchecked><span>☆</span></Unchecked>)
+            stars.push(<Unfilled><span>★</span></Unfilled>)
         }
       }
       return stars;
