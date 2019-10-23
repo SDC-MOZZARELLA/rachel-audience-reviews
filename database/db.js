@@ -9,7 +9,7 @@ const AReviewSchema = new mongoose.Schema({
   reviewRating: Number,
   reviewDate: String,
   reviewText: String,
-  reviewerName: String
+  reviewerName: String,
 })
 
 // create model
@@ -34,7 +34,7 @@ var generateFakeData = (count) => {
         reviewRating: Math.ceil(Math.random() * 5),
         reviewDate: faker.fake("{{date.past}}").toString().substring(4, 15),
         reviewText: faker.fake("{{lorem.paragraphs}}"),
-        reviewerName: firstName + " " + lastName
+        reviewerName: firstName + " " + lastName,
       })
       reviewArray.push(newReview);
     }
@@ -50,7 +50,7 @@ const save = (data => {
       reviewRating: Math.ceil(Math.random() * 5),
       reviewDate: review.reviewDate,
       reviewText: review.reviewText,
-      reviewerName: review.reviewerName
+      reviewerName: review.reviewerName,
     })
     newReview.save(data);
   })

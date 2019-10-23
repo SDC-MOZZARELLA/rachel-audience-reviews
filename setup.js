@@ -1,5 +1,5 @@
-var enzyme = require('enzyme');
+var Enzyme = require('enzyme');
 var Adapter = require('enzyme-adapter-react-16');
+global.fetch = require('jest-fetch-mock');
 
-
-enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() });

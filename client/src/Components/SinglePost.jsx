@@ -62,6 +62,11 @@ const Checked = styled.div`
   color: orange;
 `;
 
+const Unchecked = styled.div`
+  display: inline;
+  color: black;
+`;
+
 const SRDate = styled.div`
   display: inline-flex;
   flex-flow: wrap;
@@ -205,9 +210,9 @@ class SinglePost extends React.Component {
       var stars = [];
       for (var i = 0; i < 5; i++) {
         if (i < element.reviewRating) {
-            stars.push(<Checked><span className="fa fa-star"></span></Checked>)
+            stars.push(<Checked><span>☆</span></Checked>)
         } else {
-            stars.push(<span className="fa fa-star"></span>)
+            stars.push(<Unchecked><span>☆</span></Unchecked>)
         }
       }
       return stars;

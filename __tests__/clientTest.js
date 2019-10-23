@@ -1,12 +1,12 @@
 import React from 'react';
-import SinglePost from '../src/Components/SinglePost';
+import App from '../client/src/index.jsx';
 import { shallow } from 'enzyme';
 
-describe('Single Post component', () => {
-  it('should have a "Show More" button', () => {
-    const wrapper = shallow(<SinglePost />);
-    const postState = wrapper.state().buttonText;
-    epexct(postState).toEqual('Show More');
+describe('App React component', () => {
+  it('should have a "See all Audience reviews" button', () => {
+    const wrapper = shallow(<App/>);
+    const postState = wrapper.state().text;
+    expect(postState).toEqual('See all Audience reviews');
   })
 })
 
