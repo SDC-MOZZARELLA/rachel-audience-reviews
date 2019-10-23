@@ -12,7 +12,7 @@ app.get('/api/audienceReviews', (req,res) => {
     if (err) {
       console.log('error occurred', err);
     } else {
-      res.send(results);
+      res.status(200).send(results).end();
     }
   });
 });

@@ -1,46 +1,58 @@
 var mongoose = require('mongoose');
 mongoose.connect(`mongodb://localhost/ARList`, {useNewUrlParser:true});
+var faker = require('faker');
+
 // create schema
 const AReviewSchema = new mongoose.Schema({
   reviewId: Number,
+  reviewMovie: String,
   reviewRating: Number,
   reviewDate: String,
   reviewText: String,
-  reviewerName: String
+  reviewerName: String,
 })
 
 // create model
 var AReview = mongoose.model('review', AReviewSchema);
 
-// random name generator
-var RandomNameGenerator = () => {
-  let firstName = ["Julia", "Rob", "Jenny", "Kai", "Jon"],
-    lastName = ["Gens", "Nolan", "Shamoo", "Dong", "Yang"]
-
-  return `${firstName[Math.floor(Math.random() * 5)]} ${lastName[Math.floor(Math.random() * 5)]}`;
+// random movie title generator
+var RandomMovieGenerator = () => {
+  let movieName = ["Harry-Potter","Star-Wars","Lord-of-The-Rings","The-Matrix","Dumb-and-dumber"]
+  return `${movieName[Math.floor(Math.random() * 5)]}`;
 };
 
-// random date generator
-var RandomDateGenerator = () => {
-  let months = ['Jan','Feb','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];
+// fake data generator
+var generateFakeData = (count) => {
+  var reviewArray = [];
+    for (var i = 0; i < count; i++) {
+      var firstName = faker.fake("{{name.firstName}}")
+      var lastName = faker.fake("{{name.lastName}}").slice(0,1);
 
-  let randomMonth = months[Math.floor(Math.random() * 12)];
-  return `${randomMonth} ${Math.ceil(Math.random() * 31)}, ${Math.ceil(Math.random() * 2) + 2017}`;
+      var newReview = new AReview ({
+        reviewId: i+1,
+        reviewMovie: RandomMovieGenerator(),
+        reviewRating: Math.ceil(Math.random() * 5),
+        reviewDate: faker.fake("{{date.past}}").toString().substring(4, 15),
+        reviewText: faker.fake("{{lorem.paragraphs}}"),
+        reviewerName: firstName + " " + lastName,
+      })
+      reviewArray.push(newReview);
+    }
+  return reviewArray;
 };
-
 
 // seeding function
 const save = (data => {
   data.forEach(review => {
     var newReview = new AReview ({
       reviewId: review.reviewId,
+      reviewMovie: RandomMovieGenerator(),
       reviewRating: Math.ceil(Math.random() * 5),
-      reviewDate: RandomDateGenerator(),
+      reviewDate: review.reviewDate,
       reviewText: review.reviewText,
-      reviewerName: RandomNameGenerator()
+      reviewerName: review.reviewerName,
     })
-    newReview.save();
-    console.log(newReview)
+    newReview.save(data);
   })
 });
 
@@ -59,3 +71,4 @@ const getReviews = (callback) => {
 module.exports.AReview = AReview;
 module.exports.save = save;
 module.exports.getReviews = getReviews;
+module.exports.generateFakeData = generateFakeData;
