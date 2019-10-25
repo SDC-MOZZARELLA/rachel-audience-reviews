@@ -71,12 +71,12 @@ const SRDate = styled.div`
   display: inline-flex;
   flex-flow: wrap;
   margin: 0.5rem;
-  font-family: 'Franklin Gothic FS Book','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-family: roboto,Helvetica,Arial,sans-serif;
   flex: 1 1 auto;
   float: right;
   padding-top: 1.0rem;
   color: #757a84;
-  font-size: 18;
+  font-size: 12px;
 `;
 
 const TextAndButtonContainer = styled.div`
@@ -89,7 +89,7 @@ const SRText = styled.div`
   display: flex;
   flex-flow: column wrap;
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: 12px;
   color: #2A2C32;
   padding-top: 10px;
   padding-left: 5px;
@@ -133,7 +133,7 @@ const Img = styled.img`
 
 const SRUser = styled.div`
   display: grid;
-  font-size: 22px;
+  font-size: 20px;
   width: 250x;
   font-family: 'Neusa Next Pro Compact',sans-serif;
   font-weight: normal;
@@ -163,7 +163,7 @@ const Button = styled.button`
   font-weight: 600;
   text-decoration: none;
   font-family: sans-serif;
-  font-size: 19px;
+  font-size: 12px;
   margin-top: 2px;
   outline: none;
   &:hover {
@@ -184,6 +184,7 @@ const Speech = styled.div`
     display: block;
     position: relative;
     width: 0;
+  }
 `;
 
 class SinglePost extends React.Component {

@@ -6,7 +6,7 @@ const AppWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  max-width: 1000px;
+  width: 800px;
   padding: 0px;
 `;
 
@@ -14,7 +14,7 @@ const TitleBackground = styled.h1`
   display:inline-flex;
   background: #FA320A;
   width: 100%;
-  height: 28px;
+  height: 22px;
   align-items: center;
   margin-bottom: 0px;
 `;
@@ -22,14 +22,14 @@ const TitleBackground = styled.h1`
 const Title = styled.div`
   display: flex;
   white-space: nowrap;
-  font-size: 36px;
-  font-family: "Arial Narrow";
-  font-stretch: ultra-condensed;
-  letter-spacing: -1px;
-  font-weight: 900;
+  font-size: 24px;
+  font-family: Neusa Next Pro Compact Medium, Impact, Arial, sans-serif;
+
+
+
   width: 100%;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   margin-left: 25px;
   margin-right: 60%;
   padding-left: 10px;
@@ -68,7 +68,7 @@ const Button = styled.button`
   color: dodgerblue;
   text-decoration: none;
   font-family: Arial,sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   outline: none;
   &:hover {
     text-decoration: none;
