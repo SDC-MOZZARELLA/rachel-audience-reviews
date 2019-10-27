@@ -3,7 +3,10 @@ const app = express();
 const PORT = process.env.PORT || 8100;
 const path = require('path');
 const db = require('../database/db.js');
+const cors = require('cors');
 
+
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
