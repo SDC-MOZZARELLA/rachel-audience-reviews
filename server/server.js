@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/api/audienceReviews', (req,res) => {
+app.get('http://localhost:8100/api/audienceReviews', (req,res) => {
   db.getReviews((err, results) => {
     if (err) {
       console.log('error occurred', err);
