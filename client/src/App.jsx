@@ -22,7 +22,7 @@ class App extends React.Component {
   getAudienceReviews() {
     var url = this.state.movieName;
 
-    fetch('http://localhost:8100/api/audienceReviews')
+    fetch('/api/audienceReviews')
       .then(list => list.json())
       .then(returned => this.setState({
         movieName: returned[Math.floor(Math.random()*100)].reviewMovie,
