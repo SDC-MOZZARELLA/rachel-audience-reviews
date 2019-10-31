@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/ARList', { useNewUrlParser: true });
-
 // create schema
 const ReviewSchema = new mongoose.Schema({
   reviewId: Number,

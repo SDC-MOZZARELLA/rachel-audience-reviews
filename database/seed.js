@@ -24,7 +24,7 @@ const generateReview = (id) => {
 
 const seed = (count) => {
   for (let i = 0; i < count; i += 1) {
-    db.save(generateReview(i), (err, results) => {
+    db.createReview(generateReview(i), (err, results) => {
       if (err) {
         console.log('err', err);
       }
@@ -33,4 +33,10 @@ const seed = (count) => {
   console.log('seeding complete :)');
 };
 
-seed(100);
+db.resetAllReviews((err) => {
+  if (err) {
+    console.log('error deleting data', err);
+  } else {
+    seed(100);
+  }
+});

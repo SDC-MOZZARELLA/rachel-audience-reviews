@@ -1,29 +1,42 @@
+const mongoose = require('mongoose');
 const model = require('./model.js');
 
-const save = (review, callback) => {
+mongoose.connect('mongodb://localhost/ARList', { useNewUrlParser: true });
+
+
+const createReview = (review, callback) => {
   model.Review.create(review).then((result) => {
     callback(null, result);
   }).catch((err) => callback(err));
 };
 
-const getReviews = (movie, callback) => {
-  model.Review.find({ reviewMovie: movie }, (err, results) => {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, results);
-    }
-  });
+const readAllReviews = (movie, callback) => {
+  model.Review.find({ reviewMovie: movie }).then((result) => {
+    callback(null, result);
+  }).catch((err) => callback(err));};
+
+const updateReview = (id, changes, callback) => {
+  model.Review.updateOne({ reviewId: id }, changes).then((result) => {
+    callback(null, result);
+  }).catch((err) => callback(err));
 };
 
-const reset = (callback) => {
-  model.Review.deleteMany({}, (err) => {
-    if (err) {
-      callback(err);
-    } else {
-      callback(null);
-    }
-  });
+const deleteReview = (id, callback) => {
+  model.Review.deleteOne({ reviewId: id }).then((result) => {
+    callback(null, result);
+  }).catch((err) => callback(err));
 };
 
-module.exports = { save, getReviews, reset };
+const resetAllReviews = (callback) => {
+  model.Review.deleteMany({}).then((result) => {
+    callback(null, result);
+  }).catch((err) => callback(err));
+};
+
+module.exports = {
+  createReview,
+  readAllReviews,
+  updateReview,
+  deleteReview,
+  resetAllReviews,
+};

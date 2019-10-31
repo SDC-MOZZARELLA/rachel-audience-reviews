@@ -1,17 +1,19 @@
 const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 8100;
-const path = require('path');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const db = require('../database/db.js');
 
-
+const json = bodyParser.json();
+const app = express();
+const PORT = process.env.PORT || 8100;
 app.use(cors());
+app.use(json);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// create
 app.post('/api/audienceReviews', (req, res) => {
-  db.getReviews(req.body, (err, results) => {
+  db.createReview(req.body, (err, results) => {
     if (err) {
       console.log('error occurred', err);
     } else {
@@ -20,8 +22,9 @@ app.post('/api/audienceReviews', (req, res) => {
   });
 });
 
+// read
 app.get('/api/audienceReviews/:movie', (req, res) => {
-  db.save(req.params.movie, (err, results) => {
+  db.readAllReviews(req.params.movie, (err, results) => {
     if (err) {
       console.log('error occurred', err);
     } else {
@@ -30,9 +33,9 @@ app.get('/api/audienceReviews/:movie', (req, res) => {
   });
 });
 
-app.put('/api/audienceReviews/:reviewId', (req, res) => {
-  console.log('movie from the server', req.params.movie);
-  db.updateReview(req.params.reviewId, (err, results) => {
+// update
+app.put('/api/audienceReviews', (req, res) => {
+  db.updateReview(req.body.reviewId, req.body.changes, (err, results) => {
     if (err) {
       console.log('error occurred', err);
     } else {
@@ -41,9 +44,9 @@ app.put('/api/audienceReviews/:reviewId', (req, res) => {
   });
 });
 
-app.delete('/api/audienceReviews/:reviewId', (req, res) => {
-  console.log('movie from the server', req.params.movie);
-  db.deleteReview(req.params.reviewId, (err, results) => {
+// delete
+app.delete('/api/audienceReviews', (req, res) => {
+  db.deleteReview(req.body.reviewId, (err, results) => {
     if (err) {
       console.log('error occurred', err);
     } else {
