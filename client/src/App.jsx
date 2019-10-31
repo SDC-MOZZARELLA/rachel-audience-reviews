@@ -20,16 +20,12 @@ class App extends React.Component {
   }
 
   getAudienceReviews() {
-    var url = this.state.movieName;
-
-    fetch('/api/audienceReviews')
+    const url = new URL(window.location.href);
+    const movie = url.searchParams.get('movie');
+    fetch(`/api/audienceReviews/${movie}`)
       .then(list => list.json())
       .then(returned => this.setState({
-        movieName: returned[Math.floor(Math.random()*100)].reviewMovie,
         movieReviews: returned
-      }))
-      .then(() => this.setState({
-        movieReviews: this.state.movieReviews.filter(review => review.reviewMovie === this.state.movieName)
       }))
       .then(() => this.setState({
         topFour: this.state.movieReviews.slice(0,4)
