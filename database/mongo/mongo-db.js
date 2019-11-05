@@ -13,7 +13,8 @@ const createReview = (review, callback) => {
 const readAllReviews = (movie, callback) => {
   model.Review.find({ reviewMovie: movie }).then((result) => {
     callback(null, result);
-  }).catch((err) => callback(err));};
+  }).catch((err) => callback(err));
+};
 
 const updateReview = (id, changes, callback) => {
   model.Review.updateOne({ reviewId: id }, changes).then((result) => {
