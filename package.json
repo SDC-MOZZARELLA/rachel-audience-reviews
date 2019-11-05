@@ -33,6 +33,7 @@
     "mongoose": "^5.7.4",
     "node": "^12.11.1",
     "nodemon": "^1.19.3",
+    "pg": "^7.12.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "styled-components": "^4.4.0",
