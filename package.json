@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "build": "webpack -d --watch",
-    "seed": "node database/seed.js",
+    "seedPostgres": "node database/postgres/postgres-seed.js",
+    "seedMongo": "node database/mongo/mongo-seed.js",
     "test": "jest"
   },
   "keywords": [],
@@ -26,6 +27,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "fs": "0.0.1-security",
     "jest": "^24.9.0",
     "jest-fetch-mock": "^2.1.2",
     "mongo": "^0.1.0",
@@ -34,6 +36,7 @@
     "node": "^12.11.1",
     "nodemon": "^1.19.3",
     "pg": "^7.12.1",
+    "pg-copy-streams": "^2.2.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "styled-components": "^4.4.0",

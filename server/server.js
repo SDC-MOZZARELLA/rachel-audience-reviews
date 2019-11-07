@@ -1,7 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const db = require('../database/mongo/mongo-db.js');
+
+// DATABASES
+// mongo db
+// const db = require('../database/mongo/mongo-db.js');
+// postgres db
+const db = require('../database/postgres/postgres-db.js');
 
 const json = bodyParser.json();
 const app = express();
@@ -13,6 +18,7 @@ app.use(express.json());
 
 // create
 app.post('/api/audienceReviews', (req, res) => {
+  console.log('recieved post request to server');
   db.createReview(req.body, (err, results) => {
     if (err) {
       console.log('error occurred', err);
@@ -24,6 +30,7 @@ app.post('/api/audienceReviews', (req, res) => {
 
 // read
 app.get('/api/audienceReviews/:movie', (req, res) => {
+  console.log('recieved get request to server');
   db.readAllReviews(req.params.movie, (err, results) => {
     if (err) {
       console.log('error occurred', err);
