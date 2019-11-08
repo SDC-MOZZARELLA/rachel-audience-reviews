@@ -1,5 +1,0 @@
-DROP SCHEMA reviews CASCADE;
-
-CREATE SCHEMA reviews;
-
-CREATE TABLE reviews (review_id SERIAL NOT NULL,review_movie_id INT NOT NULL,review_movie_name VARCHAR(100) NOT NULL,review_rating INT NOT NULL,review_date VARCHAR(40),review_text VARCHAR(225),reviewer_name VARCHAR(40));

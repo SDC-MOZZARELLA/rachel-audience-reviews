@@ -6,8 +6,8 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "build": "webpack -d --watch",
-    "seedPostgres": "node database/postgres/postgres-seed.js",
-    "seedMongo": "node database/mongo/mongo-seed.js",
+    "seedPostgres": "node writeData.js node database/postgres/postgres-seed.js",
+    "seedMongo": "node writeData.js node database/mongo/mongo-seed.js",
     "test": "jest"
   },
   "keywords": [],
