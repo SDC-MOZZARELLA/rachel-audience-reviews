@@ -16,7 +16,10 @@ const readAllReviews = (movieId, callback) => {
   WHERE reviews.review_movie_id = '${movieId}'`;
   client
     .query(query)
-    .then((result) => callback(null, result.rows))
+    .then((result) => {
+      console.log('result', result);
+      callback(null, result.rows);
+    })
     .catch((err) => callback(err.stack));
 };
 
