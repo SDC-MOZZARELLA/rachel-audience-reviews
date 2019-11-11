@@ -29,9 +29,9 @@ app.post('/api/audienceReviews', (req, res) => {
 });
 
 // read
-app.get('/api/audienceReviews/:movie', (req, res) => {
+app.get('/api/audienceReviews/', (req, res) => {
   console.log('recieved get request to server');
-  db.readAllReviews(req.params.movie, (err, results) => {
+  db.readAllReviews(req.query.movie, (err, results) => {
     if (err) {
       console.log('error occurred', err);
     } else {

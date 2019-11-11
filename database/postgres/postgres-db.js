@@ -10,10 +10,10 @@ const createReview = ({ _id, reviewId, reviewMovie, reviewRating, reviewDate, re
     .catch((err) => callback(err.stack));
 };
 
-const readAllReviews = (movie, callback) => {
-  console.log(`recieved readAllReviews request for ${movie}`);
+const readAllReviews = (movieId, callback) => {
+  console.log(`recieved readAllReviews request for ${movieId}`);
   const query = `SELECT * FROM reviews
-  WHERE reviews.review_movie_name = '${movie}'`;
+  WHERE reviews.review_movie_id = '${movieId}'`;
   client
     .query(query)
     .then((result) => callback(null, result.rows))
