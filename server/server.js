@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -29,13 +30,29 @@ app.post('/api/audienceReviews', (req, res) => {
 });
 
 // read
-app.get('/api/audienceReviews/', (req, res) => {
+app.get('/api/audienceReviews', (req, res) => {
+  console.time('get');
   console.log('recieved get request to server');
-  db.readAllReviews(req.query.movie, (err, results) => {
+  db.readAllReviews(Number(req.query.movie), (err, results) => {
     if (err) {
       console.log('error occurred', err);
     } else {
-      res.status(200).send(results).end();
+      // results = results.map((el) => el.review_text);
+      const formattedResults = [];
+      results.forEach((el) => {
+        formattedResults.push({
+          reviewDate: el.review_date,
+          reviewId: el.review_id,
+          reviewMovieId: el.review_movie_id,
+          reviewMovieName: el.review_movie_name,
+          reviewRating: el.review_rating,
+          reviewText: el.review_text,
+          reviewerName: el.reviewer_name,
+        });
+      });
+      // console.log('results', formattedResults);
+      res.status(200).send(formattedResults).end();
+      console.timeEnd('get');
     }
   });
 });
