@@ -22,14 +22,15 @@ class App extends React.Component {
   getAudienceReviews() {
     const url = new URL(window.location.href);
     const movie = url.searchParams.get('movie');
-    fetch(`/api/audienceReviews/${movie}`)
+    fetch(`/api/audienceReviews?movie=${movie}`)
       .then(list => list.json())
-      .then(returned => this.setState({
-        movieReviews: returned
-      }))
-      .then(() => this.setState({
-        topFour: this.state.movieReviews.slice(0,4)
-      }))
+      .then(returned => {
+        console.log('returned->', returned);
+        this.setState({
+          movieReviews: returned,
+          topFour: returned.slice(0, 4)
+        })
+      })
       .then(() => this.setState({ isLoaded: true }))
   }
 
