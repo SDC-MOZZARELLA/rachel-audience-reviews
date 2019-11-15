@@ -1,14 +1,21 @@
 const client = require('./postgres-client.js');
 
-// const createReview = ({ _id, reviewId, reviewMovie, reviewRating, reviewDate, reviewText, reviewerName }, callback) => {
-//   console.log('whats it recieving in the db??', arguments[0]);
-//   const query = `INSERT INTO reviews (id, review_id, review_movie_id, review_movie_name, review_rating, review_date, review_text, reviewer_name)
-//   VALUES (${_id}, ${reviewId}, 5, ${reviewMovie}, ${reviewRating}, ${reviewDate}, ${reviewText}, ${reviewerName})`;
-//   client
-//     .query(query)
-//     .then((result) => callback(null, result.rows[0]))
-//     .catch((err) => callback(err.stack));
-// };
+const createReview = (review, callback) => {
+  console.log('whats it recieving in the db??', review);
+  const query = `INSERT INTO reviews VALUES (
+      '${review.review_id}',
+      '${review.review_movie_id}',
+      '${review.review_movie_name}',
+      '${review.review_rating}',
+      '${review.review_date}',
+      '${review.review_text}',
+      '${review.reviewer_name}'
+    )`;
+  client
+    .query(query)
+    .then((result) => callback(null, result.rows[0]))
+    .catch((err) => callback(err.stack));
+};
 
 const readAllReviews = (movieId, callback) => {
   console.log(`recieved readAllReviews request for ${movieId}`);
@@ -44,7 +51,7 @@ const readAllReviews = (movieId, callback) => {
 // };
 
 module.exports = {
-  // createReview,
+  createReview,
   readAllReviews,
   // updateReview,
   // deleteReview,
