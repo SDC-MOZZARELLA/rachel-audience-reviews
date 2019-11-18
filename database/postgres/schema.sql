@@ -19,3 +19,6 @@ CREATE TABLE reviews (review_id INT NOT NULL,review_movie_id INT NOT NULL,review
 
 --to load this file:
 -- psql postgres < database/postgres/schema.sql
+
+-- to load data to a remote host (doesn't work)
+-- psql -h remotehost -d reviews -U power_user -c "\copy reviews from '/Users/rachnovo/Desktop/HRR41/SDC/rachel-audience-reviews/database/reviews.csv' WITH CSV HEADER"

@@ -6,15 +6,15 @@ const randomNum = (min, max, places = 0) => (
   Number((Math.random() * (max - min) + min).toFixed(places))
 );
 
-const writeUsers = fs.createWriteStream('database/reviews.csv');
+const writeUsers = fs.createWriteStream('database/csv/reviews.csv');
 writeUsers.write('reviewId,reviewMovieId,reviewMovieName,reviewRating,reviewDate,reviewText,reviewerName\n', 'utf8');
 
 function writeReviews(writer, encoding, callback) {
-  let i = 10000000;
-  let id = 0;
-  let movieId = 1000;
+  let i = 150000;
+  let id = 1;
+  let movieId = 1;
   let movieName = generateMovieName();
-  let rando = 20;
+  let rando = id + 20;
   function write() {
     let ok = true;
     do {
@@ -44,8 +44,15 @@ function writeReviews(writer, encoding, callback) {
     }
   }
   write();
+  console.log()
 }
 
 writeReviews(writeUsers, 'utf-8', () => {
   writeUsers.end();
 });
+
+// run file 4 times, each time I'll run it
+// to reviews1.csv // 1-2,500,000
+// to reviews2.csv // 2,500,001-6,000,000
+
+// to reviews3.csv // 6,000,001-10,000,000
