@@ -81,7 +81,7 @@ app.delete('/api/audienceReviews', (req, res) => {
 });
 
 app.get('/loaderio-4aaa72da9f27ce7189151dd23f342e49.txt', (req, res) => {
-  res.semd('loaderio-4aaa72da9f27ce7189151dd23f342e49');
+  res.send('loaderio-4aaa72da9f27ce7189151dd23f342e49');
 });
 
 app.use(express.static('client/dist'));
