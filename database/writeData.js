@@ -10,11 +10,11 @@ const writeUsers = fs.createWriteStream('database/csv/reviews.csv');
 writeUsers.write('reviewId,reviewMovieId,reviewMovieName,reviewRating,reviewDate,reviewText,reviewerName\n', 'utf8');
 
 function writeReviews(writer, encoding, callback) {
-  let i = 150000;
+  let i = 10000000;
   let id = 1;
   let movieId = 1;
   let movieName = generateMovieName();
-  let rando = id + 20;
+  let rando = id + 10;
   function write() {
     let ok = true;
     do {
@@ -22,7 +22,7 @@ function writeReviews(writer, encoding, callback) {
       // each time our id reaches the random number (0-20), generate a new movie name
       // this is to create 0-20 reviews for each movie
       if (id > rando) {
-        rando += Math.floor(Math.random() * 20);
+        rando += Math.floor(Math.random() * 10);
         movieId += 1;
         movieName = generateMovieName();
         i -= 1;

@@ -15,7 +15,7 @@ CREATE TABLE reviews (review_id INT NOT NULL,review_movie_id INT NOT NULL,review
 \q
 
 --to copy the csv file from the command line:
--- psql -d reviews -c "\copy public.reviews FROM '/Users/rachnovo/Desktop/HRR41/SDC/rachel-audience-reviews/database/reviews.csv' WITH CSV HEADER"
+-- psql -d reviews -c "\copy reviews FROM '/Users/rachnovo/Desktop/HRR41/SDC/rachel-audience-reviews/database/reviews.csv' WITH CSV HEADER"
 
 --to load this file:
 -- psql postgres < database/postgres/schema.sql
@@ -23,6 +23,6 @@ CREATE TABLE reviews (review_id INT NOT NULL,review_movie_id INT NOT NULL,review
 -- to load data to a remote host (doesn't work)
 -- psql -h ec2-52-12-83-255.us-west-2.compute.amazonaws.com -d reviews -U power_user -c "\copy reviews from '/Users/rachnovo/Desktop/HRR41/SDC/rachel-audience-reviews/database/reviews.csv' WITH CSV HEADER"
 
--- scp -i 'postgres.pem' /Users/rachnovo/Desktop/HRR41/SDC/rachel-audience-reviews/database/csv/reviews1.csv ec2-user@ec2-52-12-83-255.us-west-2.compute.amazonaws.com:~/data/reviews.csv
+-- scp -i 'audience-reviews.pem' /Users/rachnovo/Desktop/HRR41/SDC/rachel-audience-reviews/database/csv/reviews.csv ec2-user@ec2-34-208-147-225.us-west-2.compute.amazonaws.com:~/data/reviews.csv
 
--- psql -d reviews -c "\copy public.reviews FROM '~/data/reviews.csv' WITH CSV HEADER"
+-- sudo -u postgres psql -d reviews -c "\copy public.reviews FROM '/home/ec2-user/data/reviews.csv' with CSV HEADER;
