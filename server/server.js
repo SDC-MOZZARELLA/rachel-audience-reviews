@@ -31,8 +31,8 @@ app.post('/api/audienceReviews', (req, res) => {
 
 // read
 app.get('/api/audienceReviews', (req, res) => {
-  console.time('get');
   console.log('recieved get request to server');
+  console.time('get');
   db.readAllReviews(Number(req.query.movie), (err, results) => {
     if (err) {
       console.log('error occurred', err);
@@ -53,6 +53,7 @@ app.get('/api/audienceReviews', (req, res) => {
       // console.log('results', formattedResults);
       res.status(200).send(formattedResults).end();
       console.timeEnd('get');
+      console.log('info sent, timer ended');
     }
   });
 });
